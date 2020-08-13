@@ -50,10 +50,10 @@ export const Success = ({ candidate }) => {
             className="mx-auto text-center rounded"
             style={{ width: '18rem' }}
           >
-            <Card.Img
+            {/* <Card.Img
               variant="top"
               src={candidate.candidates[currentCandidate].photos[0].photo_url}
-            />
+            /> */}
             <Card.Body>
               <Card.Title>
                 {candidate.candidates[currentCandidate].name}
@@ -66,9 +66,12 @@ export const Success = ({ candidate }) => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <Button onClick={() => setCurrentCandidate(currentCandidate + 1)}>
-            Next
+        <Col className="text-center">
+          <Button
+            className="btn-warning mt-2"
+            onClick={() => setCurrentCandidate(currentCandidate + 1)}
+          >
+            Taco Me Again
           </Button>
         </Col>
       </Row>
