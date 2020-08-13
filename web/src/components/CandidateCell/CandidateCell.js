@@ -1,7 +1,16 @@
 export const QUERY = gql`
-  query CandidateQuery {
-    candidate {
-      id
+  query($searchTerm: String!) {
+    candidate: getPlaces(searchTerm: $searchTerm) {
+      candidates {
+        name
+        rating
+        formatted_address
+        open_now
+        photos {
+          height
+          width
+        }
+      }
     }
   }
 `
