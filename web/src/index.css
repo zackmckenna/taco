@@ -8,28 +8,35 @@
   }
 } */
 
-html {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+body {
   background: rgba(244, 244, 244, 0.8);
 }
 
-h1 {
-  font-family: 'Open Sans';
-  font-weight: bold;
-  font-size: 64px;
+h1, h5, p, button {
+  font-family: 'Open Sans' sans-serif;
   color: rgba(0, 0, 0, 0.9);
 }
 
-p {
-  font-family: 'Open Sans';
-font-weight: 600;
-font-size: 14px;
-line-height: 22px;
-color: rgba(0, 0, 0, 0.9);
+h1 {
+  font-weight: bold;
+  font-size: 64px;
 }
 
-button .p {
-  font-family: Open Sans;
-font-weight: bold;
-font-size: 17px;
-color: rgba(0, 0, 0, 0.9);
+h5 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+p {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+button {
+  font-weight: bold;
+  font-size: 17px;
 }
