@@ -68,6 +68,7 @@ export const Success = ({ candidate }) => {
       <Row>
         <Col className="text-center">
           <Button
+            style={{ borderRadius: '50px' }}
             className="btn-warning mt-2"
             onClick={() => setCurrentCandidate(currentCandidate + 1)}
           >
