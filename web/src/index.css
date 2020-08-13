@@ -7,3 +7,29 @@
     bottom: 0;
   }
 } */
+
+html {
+  background: rgba(244, 244, 244, 0.8);
+}
+
+h1 {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 64px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+p {
+  font-family: 'Open Sans';
+font-weight: 600;
+font-size: 14px;
+line-height: 22px;
+color: rgba(0, 0, 0, 0.9);
+}
+
+button .p {
+  font-family: Open Sans;
+font-weight: bold;
+font-size: 17px;
+color: rgba(0, 0, 0, 0.9);
+}
