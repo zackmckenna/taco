@@ -56,21 +56,30 @@ const HomePage = () => {
   return (
     <>
       <Container>
-        <Row>
-          <Col className="mt-4 text-center">
-            <h1>taco.io</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center">
-            <p>quickly locate the nearest taco joint</p>
-          </Col>
-        </Row>
+        {!searchTerm && (
+          <>
+            <Row>
+              <Col className="mt-4 text-center">
+                <h1>taco.io</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="text-center">
+                <p>quickly locate the nearest taco joint</p>
+              </Col>
+            </Row>
+          </>
+        )}
         <Row>
           <Col className="p-3 text-center">
             {!searchTerm && <Image src={taco} rounded />}
             {searchTerm && (
-              <Image style={{ height: '4rem' }} src={taco} rounded />
+              <Image
+                onClick={() => setSearchTerm(null)}
+                style={{ height: '4rem' }}
+                src={taco}
+                rounded
+              />
             )}
           </Col>
         </Row>

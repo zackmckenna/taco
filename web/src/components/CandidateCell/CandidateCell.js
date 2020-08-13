@@ -46,10 +46,7 @@ export const Success = ({ candidate }) => {
     <>
       <Row>
         <Col>
-          <Card
-            className="mx-auto text-center rounded"
-            style={{ width: '18rem' }}
-          >
+          <Card className="mx-auto rounded" style={{ width: '18rem' }}>
             <Card.Img
               variant="top"
               src={candidate.candidates[currentCandidate].photos[0].photo_url}
@@ -59,8 +56,11 @@ export const Success = ({ candidate }) => {
                 {candidate.candidates[currentCandidate].name}
               </Card.Title>
               <Card.Text>
-                rating: {candidate.candidates[currentCandidate].rating}
+                {candidate.candidates[currentCandidate].vicinity}
               </Card.Text>
+              <Card.Subtitle>
+                {candidate.candidates[currentCandidate].rating}/5
+              </Card.Subtitle>
             </Card.Body>
           </Card>
         </Col>
