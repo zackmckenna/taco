@@ -50,10 +50,10 @@ export const Success = ({ candidate }) => {
             className="mx-auto text-center rounded"
             style={{ width: '18rem' }}
           >
-            {/* <Card.Img
+            <Card.Img
               variant="top"
               src={candidate.candidates[currentCandidate].photos[0].photo_url}
-            /> */}
+            />
             <Card.Body>
               <Card.Title>
                 {candidate.candidates[currentCandidate].name}

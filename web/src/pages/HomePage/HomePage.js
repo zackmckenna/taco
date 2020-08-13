@@ -81,7 +81,7 @@ const HomePage = () => {
             longitude={longitude}
           />
         )}
-        {!searchTerm && (
+        {!searchTerm && latitude && longitude && (
           <Row>
             <Col className="text-center">
               <Button
