@@ -68,7 +68,10 @@ const HomePage = () => {
         </Row>
         <Row>
           <Col className="p-3 text-center">
-            <Image src={taco} rounded />
+            {!searchTerm && <Image src={taco} rounded />}
+            {searchTerm && (
+              <Image style={{ height: '4rem' }} src={taco} rounded />
+            )}
           </Col>
         </Row>
         {searchTerm && (
