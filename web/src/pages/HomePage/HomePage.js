@@ -4,31 +4,65 @@ import CandidateCell from 'src/components/CandidateCell'
 import { Button } from 'react-bootstrap'
 
 const HomePage = () => {
-  const [searchTerm, setSearchTerm] = useState('taco')
+  const [searchTerm, setSearchTerm] = useState(null)
   const [findCandidate, setFindCandidate] = useState(false)
   const [latitude, setLatitude] = useState(null)
   const [longitude, setLongitude] = useState(null)
 
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 10000,
+  }
+
+  const success = (position) => {
+    setLatitude(position.coords.latitude)
+    setLongitude(position.coords.longitude)
+    console.log('lat', position.latitude, 'lon', position.longitude)
+  }
+
+  const error = (error) => {
+    console.log(error)
+  }
+
   useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLatitude(position.coords.latitude)
-        setLongitude(position.coords.longitude)
-      })
-    } else {
-      console.log('location not available')
-    }
-  })
-  const handleFindCandidate = () => {
-    setFindCandidate(!findCandidate)
+    navigator.geolocation.getCurrentPosition(success, error, options)
+  }, [])
+
+  const handleClick = (term) => {
+    setSearchTerm(term)
+  }
+
+  const handleTacoClick = () => {
+    setSearchTerm('taco')
+    console.log(latitude)
+    console.log(longitude)
+  }
+
+  const handleBurgerClick = () => {
+    setSearchTerm('burger')
+  }
+
+  const handlePizzaClick = () => {
+    setSearchTerm('pizza')
+  }
+
+  const requestLocation = () => {
+    navigator.geolocation.getCurrentPosition(success, error, options)
   }
 
   return (
     <>
       <h1>Taco</h1>
       <p>Find tacos near you</p>
-      <Button onClick={() => handleFindCandidate()}>Taco</Button>
-      {findCandidate && (
+      {!latitude && !longitude && (
+        <Button onClick={() => requestLocation()}>Give Permission</Button>
+      )}
+      <Button onClick={() => handleTacoClick()}>Taco</Button>
+      <Button onClick={() => handleBurgerClick()}>Burger</Button>
+      <Button onClick={() => handlePizzaClick()}>Pizza</Button>
+
+      {searchTerm && (
         <CandidateCell
           latitude={latitude}
           longitude={longitude}

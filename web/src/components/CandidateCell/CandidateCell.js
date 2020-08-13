@@ -6,10 +6,17 @@ export const QUERY = gql`
       latitude: $latitude
       longitude: $longitude
     ) {
+      latitude
+      longitude
       candidates {
+        plus_code {
+          compound_code
+          global_code
+        }
         name
         rating
-        formatted_address
+        vicinity
+        price_level
         opening_hours {
           open_now
         }
@@ -31,16 +38,8 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ candidate }) => {
-  const firstCandidate = candidate.candidates[0]
-  console.log(candidate.candidates[0])
-  return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={firstCandidate.photos[0].photo_url} />
-      <Card.Body>
-        <Card.Title>{firstCandidate.name}</Card.Title>
-        <Card.Text>{firstCandidate.rating}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-  )
+  console.log(candidate)
+  return candidate.candidates.map((candidate, index) => {
+    return <h1 key={index}>{candidate.name}</h1>
+  })
 }
