@@ -22,7 +22,7 @@ const HomePage = () => {
   return (
     <>
       <h1>Taco</h1>
-      <p>Find tacos near you</p>
+      <p>Find tacoms near you</p>
       <Button onClick={() => handleFindCandidate()}>Taco</Button>
       {findCandidate && <CandidateCell searchTerm={searchTerm} />}
     </>
