@@ -66,23 +66,19 @@ const HomePage = () => {
             <p>quickly locate the nearest taco joint</p>
           </Col>
         </Row>
+        <Row>
+          <Col className="p-3 text-center">
+            <Image src={taco} rounded />
+          </Col>
+        </Row>
         {searchTerm && (
-          <Row>
-            <Col className="text-center mx-auto">
-              <CandidateCell
-                searchTerm={searchTerm}
-                latitude={latitude}
-                longitude={longitude}
-              />
-            </Col>
-          </Row>
+          <CandidateCell
+            searchTerm={searchTerm}
+            latitude={latitude}
+            longitude={longitude}
+          />
         )}
-        <div className="taco_button">
-          <Row>
-            <Col className="p-3 text-center">
-              <Image src={taco} rounded />
-            </Col>
-          </Row>
+        {!searchTerm && (
           <Row>
             <Col className="text-center">
               <Button
@@ -94,7 +90,7 @@ const HomePage = () => {
               </Button>
             </Col>
           </Row>
-        </div>
+        )}
       </Container>
     </>
   )

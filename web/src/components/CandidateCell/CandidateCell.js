@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Row, Col } from 'react-bootstrap'
 export const QUERY = gql`
   query($searchTerm: String!, $latitude: Float, $longitude: Float) {
     candidate: getPlaces(
@@ -43,17 +43,35 @@ export const Success = ({ candidate }) => {
 
   console.log(candidate.candidates[currentCandidate])
   return (
-    <Card className="mx-auto text-center rounded" style={{ width: '18rem' }}>
-      <Card.Img
-        variant="top"
-        src={candidate.candidates[currentCandidate].photos[0].photo_url}
-      />
-      <Card.Body>
-        <Card.Title>{candidate.candidates[currentCandidate].name}</Card.Title>
-        <Card.Text>
-          rating: {candidate.candidates[currentCandidate].rating}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+      <Row>
+        <Col>
+          <Card
+            className="mx-auto text-center rounded"
+            style={{ width: '18rem' }}
+          >
+            <Card.Img
+              variant="top"
+              src={candidate.candidates[currentCandidate].photos[0].photo_url}
+            />
+            <Card.Body>
+              <Card.Title>
+                {candidate.candidates[currentCandidate].name}
+              </Card.Title>
+              <Card.Text>
+                rating: {candidate.candidates[currentCandidate].rating}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button onClick={() => setCurrentCandidate(currentCandidate + 1)}>
+            Next
+          </Button>
+        </Col>
+      </Row>
+    </>
   )
 }
