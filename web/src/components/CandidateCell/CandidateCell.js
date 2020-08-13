@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 export const QUERY = gql`
   query($searchTerm: String!, $latitude: Float, $longitude: Float) {
@@ -38,8 +39,20 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ candidate }) => {
-  console.log(candidate)
-  return candidate.candidates.map((candidate, index) => {
-    return <h1 key={index}>{candidate.name}</h1>
-  })
+  const [currentCandidate, setCurrentCandidate] = useState(0)
+
+  console.log(candidate.candidates[currentCandidate])
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Img
+        variant="top"
+        src={candidate.candidates[currentCandidate].photos[0].photo_url}
+      />
+      <Card.Body>
+        <Card.Title>{candidate.candidates[currentCandidate].name}</Card.Title>
+        <Card.Text>{candidate.candidates[currentCandidate].rating}</Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+  )
 }

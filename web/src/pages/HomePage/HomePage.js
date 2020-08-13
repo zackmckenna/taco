@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@redwoodjs/router'
+import { Button, Container, Row, Col, Image } from 'react-bootstrap'
 import CandidateCell from 'src/components/CandidateCell'
-import { Button } from 'react-bootstrap'
+
+import taco from 'src/assets/taco.png'
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState(null)
@@ -53,22 +55,47 @@ const HomePage = () => {
 
   return (
     <>
-      <h1>Taco</h1>
-      <p>Find tacos near you</p>
-      {!latitude && !longitude && (
-        <Button onClick={() => requestLocation()}>Give Permission</Button>
-      )}
-      <Button onClick={() => handleTacoClick()}>Taco</Button>
-      <Button onClick={() => handleBurgerClick()}>Burger</Button>
-      <Button onClick={() => handlePizzaClick()}>Pizza</Button>
-
-      {searchTerm && (
-        <CandidateCell
-          latitude={latitude}
-          longitude={longitude}
-          searchTerm={searchTerm}
-        />
-      )}
+      <Container>
+        <Row>
+          <Col className="mt-4 text-center">
+            <h1>taco.io</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center">
+            <p>quickly locate the nearest taco joint</p>
+          </Col>
+        </Row>
+        {searchTerm && (
+          <Row>
+            <Col className="text-center mx-auto">
+              <CandidateCell
+                searchTerm={searchTerm}
+                latitude={latitude}
+                longitude={longitude}
+              />
+            </Col>
+          </Row>
+        )}
+        <div className="taco_button">
+          <Row>
+            <Col className="p-3 text-center">
+              <Image src={taco} rounded />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center">
+              <Button
+                style={{ borderRadius: '50px' }}
+                className="btn-lg btn-warning"
+                onClick={() => handleTacoClick()}
+              >
+                Taco Me
+              </Button>
+            </Col>
+          </Row>
+        </div>
+      </Container>
     </>
   )
 }
