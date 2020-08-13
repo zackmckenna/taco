@@ -7,10 +7,14 @@ const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('taco')
   const [findCandidate, setFindCandidate] = useState(false)
   const [latitude, setLatitude] = useState(null)
-  const [longoitude, setLongitude] = useState(null)
+  const [longitude, setLongitude] = useState(null)
+
   useEffect(() => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {})
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
+      })
     } else {
       console.log('location not available')
     }
@@ -22,9 +26,15 @@ const HomePage = () => {
   return (
     <>
       <h1>Taco</h1>
-      <p>Find tacoms near you</p>
+      <p>Find tacos near you</p>
       <Button onClick={() => handleFindCandidate()}>Taco</Button>
-      {findCandidate && <CandidateCell searchTerm={searchTerm} />}
+      {findCandidate && (
+        <CandidateCell
+          latitude={latitude}
+          longitude={longitude}
+          searchTerm={searchTerm}
+        />
+      )}
     </>
   )
 }
