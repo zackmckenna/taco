@@ -43,15 +43,16 @@ export const Success = ({ candidate }) => {
 
   console.log(candidate.candidates[currentCandidate])
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="mx-auto text-center rounded" style={{ width: '18rem' }}>
       <Card.Img
         variant="top"
         src={candidate.candidates[currentCandidate].photos[0].photo_url}
       />
       <Card.Body>
         <Card.Title>{candidate.candidates[currentCandidate].name}</Card.Title>
-        <Card.Text>{candidate.candidates[currentCandidate].rating}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text>
+          rating: {candidate.candidates[currentCandidate].rating}
+        </Card.Text>
       </Card.Body>
     </Card>
   )
