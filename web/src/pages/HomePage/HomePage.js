@@ -3,10 +3,9 @@ import { Link } from '@redwoodjs/router'
 const HomePage = () => {
   return (
     <>
-      <h1>HomePage</h1>
-      <p>Find me in "./web/src/pages/HomePage/HomePage.js"</p>
+      <h1>Taco</h1>
       <p>
-        My default route is named "home", link to me with `
+        Find tacos near you
         <Link to="home">routes.home()</Link>`
       </p>
     </>
