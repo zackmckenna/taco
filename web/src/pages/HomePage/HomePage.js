@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Link } from '@redwoodjs/router'
-import { Button, Container, Row, Col, Image, Spinner } from 'react-bootstrap'
+import { useState } from 'react'
+import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 import CandidateCell from 'src/components/CandidateCell'
 
 import taco from 'src/assets/taco.png'
@@ -32,10 +31,6 @@ const HomePage = () => {
     console.log(error)
     setGeoError(true)
   }
-
-  // useEffect(() => {
-  //   // navigator.geolocation.getCurrentPosition(success, error, options)
-  // }, [])
 
   const handleTacoClick = () => {
     setSearchTerm('taco')
