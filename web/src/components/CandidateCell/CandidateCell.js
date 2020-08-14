@@ -42,6 +42,7 @@ export const Loading = () => {
   return (
     <Row>
       <Col className="mt-4 text-center">
+        <p>finding tacos</p>
         <Spinner animation="border" size="lg" />
       </Col>
     </Row>

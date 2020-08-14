@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@redwoodjs/router'
-import { Button, Container, Row, Col, Image } from 'react-bootstrap'
+import { Button, Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 import CandidateCell from 'src/components/CandidateCell'
 
 import taco from 'src/assets/taco.png'
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState(null)
-  const [findCandidate, setFindCandidate] = useState(false)
   const [latitude, setLatitude] = useState(null)
   const [longitude, setLongitude] = useState(null)
+  const [geoError, setGeoError] = useState(null)
+  const [askForLocation, setAskForLocation] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const options = {
     enableHighAccuracy: true,
@@ -18,38 +20,30 @@ const HomePage = () => {
   }
 
   const success = (position) => {
+    setGeoError(false)
+    setLoading(false)
     setLatitude(position.coords.latitude)
     setLongitude(position.coords.longitude)
     console.log('lat', position.latitude, 'lon', position.longitude)
   }
 
   const error = (error) => {
+    setLoading(false)
     console.log(error)
+    setGeoError(true)
   }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success, error, options)
-  }, [])
-
-  const handleClick = (term) => {
-    setSearchTerm(term)
-  }
+  // useEffect(() => {
+  //   // navigator.geolocation.getCurrentPosition(success, error, options)
+  // }, [])
 
   const handleTacoClick = () => {
     setSearchTerm('taco')
-    console.log(latitude)
-    console.log(longitude)
-  }
-
-  const handleBurgerClick = () => {
-    setSearchTerm('burger')
-  }
-
-  const handlePizzaClick = () => {
-    setSearchTerm('pizza')
   }
 
   const requestLocation = () => {
+    setAskForLocation(false)
+    setLoading(true)
     navigator.geolocation.getCurrentPosition(success, error, options)
   }
 
@@ -86,10 +80,39 @@ const HomePage = () => {
             longitude={longitude}
           />
         )}
+        {loading && (
+          <Row>
+            <Col className="text-center">
+              <p>retrieving location...</p>
+              <Spinner animation="border" />
+            </Col>
+          </Row>
+        )}
         {!searchTerm && latitude && longitude && (
           <Row>
             <Col className="text-center">
               <button onClick={() => handleTacoClick()}>Taco Me</button>
+            </Col>
+          </Row>
+        )}
+        {askForLocation && (
+          <Row>
+            <Col className="text-center">
+              <p>to find your nearest taco,</p>
+              <p>please allow us to use your current location</p>
+              <button onClick={() => requestLocation()}>Allow Location</button>
+            </Col>
+          </Row>
+        )}
+        {geoError && (
+          <Row>
+            <Col className="text-center">
+              <h3>Error retrieving location</h3>
+              <p>
+                to find your nearest taco, please allow us to use your current
+                location. You can do this by clicking the icon left of the
+                address in chrome and setting 'location' to 'allow'
+              </p>
             </Col>
           </Row>
         )}
