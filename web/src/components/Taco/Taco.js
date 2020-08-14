@@ -1,0 +1,84 @@
+const Taco = () => {
+  return (
+    <svg
+      width="227"
+      height="111"
+      viewBox="0 0 227 111"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="31.5"
+        cy="69.5"
+        r="14.5"
+        fill="#4CD964"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="137"
+        cy="24"
+        r="16"
+        fill="#4CD964"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="200.5"
+        cy="67.5"
+        r="16.5"
+        fill="#4CD964"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="64.5"
+        cy="56.5"
+        r="34.5"
+        fill="#FF9500"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="163.5"
+        cy="52.5"
+        r="34.5"
+        fill="#FF9500"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="99"
+        cy="32"
+        r="30"
+        fill="#FF3B30"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="19.5"
+        cy="90.5"
+        r="17.5"
+        fill="#FF3B30"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <circle
+        cx="207.5"
+        cy="90.5"
+        r="17.5"
+        fill="#FF3B30"
+        stroke="black"
+        strokeWidth="4"
+      />
+      <path
+        d="M210.935 108.5H19.5542C18.4287 108.5 17.5325 107.61 17.617 106.487C18.6412 92.8896 28.2923 15 115 15C201.683 15 211.77 92.846 212.871 106.476C212.962 107.602 212.064 108.5 210.935 108.5Z"
+        fill="#FFCC00"
+        stroke="black"
+        strokeWidth="4"
+      />
+    </svg>
+  )
+}
+
+export default Taco

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 import CandidateCell from 'src/components/CandidateCell'
+import Taco from 'src/components/Taco'
 
 import taco from 'src/assets/taco.png'
 
@@ -57,7 +58,7 @@ const HomePage = () => {
         )}
         <Row>
           <Col className="p-3 text-center">
-            {!searchTerm && <Image src={taco} rounded />}
+            {!searchTerm && <Taco />}
             {searchTerm && (
               <Image
                 onClick={() => setSearchTerm(null)}
