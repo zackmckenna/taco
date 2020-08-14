@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import { Container, Row, Col, Image, Spinner } from 'react-bootstrap'
 import CandidateCell from 'src/components/CandidateCell'
+import GeoError from 'src/components/GeoError'
+import GeoPermission from 'src/components/GeoPermission'
+import TacoMeButton from 'src/components/TacoMeButton'
+import TacoHeader from 'src/components/TacoHeader'
 import Taco from 'src/components/Taco'
 
 import taco from 'src/assets/taco.png'
@@ -30,7 +34,7 @@ const HomePage = () => {
   const error = (error) => {
     setLoading(false)
     console.log(error)
-    setGeoError(true)
+    setGeoError(error.message)
   }
 
   const handleTacoClick = () => {
@@ -46,16 +50,7 @@ const HomePage = () => {
   return (
     <>
       <Container>
-        {!searchTerm && (
-          <>
-            <Row>
-              <Col className="mt-4 text-center">
-                <h1>taco.io</h1>
-                <p>quickly locate the nearest taco joint</p>
-              </Col>
-            </Row>
-          </>
-        )}
+        {!searchTerm && <TacoHeader />}
         <Row>
           <Col className="p-3 text-center">
             {!searchTerm && <Taco />}
@@ -85,33 +80,10 @@ const HomePage = () => {
           </Row>
         )}
         {!searchTerm && latitude && longitude && (
-          <Row>
-            <Col className="text-center">
-              <button onClick={() => handleTacoClick()}>Taco Me</button>
-            </Col>
-          </Row>
+          <TacoMeButton handleTacoClick={handleTacoClick} />
         )}
-        {askForLocation && (
-          <Row>
-            <Col className="text-center">
-              <p>to find your nearest taco,</p>
-              <p>please allow us to use your current location</p>
-              <button onClick={() => requestLocation()}>Allow Location</button>
-            </Col>
-          </Row>
-        )}
-        {geoError && (
-          <Row>
-            <Col className="text-center">
-              <h3>Error retrieving location</h3>
-              <p>
-                to find your nearest taco, please allow us to use your current
-                location. You can do this by clicking the icon left of the
-                address in chrome and setting 'location' to 'allow'
-              </p>
-            </Col>
-          </Row>
-        )}
+        {askForLocation && <GeoPermission requestLocation={requestLocation} />}
+        {geoError && <GeoError geoError={geoError} />}
       </Container>
     </>
   )
