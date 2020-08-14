@@ -9,7 +9,7 @@ const GeoError = ({ geoError }) => {
         <p>
           to find your nearest taco, please allow us to use your current
           location. You can do this by clicking the icon left of the address in
-          chrome and setting 'location' to 'allow'
+          chrome and setting &quot;location&quot; to &quot;allow&quot;
         </p>
       </Col>
     </Row>

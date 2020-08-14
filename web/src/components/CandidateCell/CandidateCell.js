@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Button, Row, Col, Spinner } from 'react-bootstrap'
+import { Card, Row, Col, Spinner } from 'react-bootstrap'
 export const QUERY = gql`
   query($searchTerm: String!, $latitude: Float, $longitude: Float) {
     candidate: getPlaces(
