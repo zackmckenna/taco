@@ -10,6 +10,12 @@ export const QUERY = gql`
       latitude
       longitude
       candidates {
+        geometry {
+          location {
+            lat
+            lng
+          }
+        }
         plus_code {
           compound_code
           global_code
@@ -48,6 +54,9 @@ export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ candidate }) => {
   const [currentCandidate, setCurrentCandidate] = useState(0)
+  const address = candidate.candidates[currentCandidate].vicinity
+    .split(' ')
+    .join('+')
 
   console.log(candidate.candidates[currentCandidate])
   return (
@@ -66,6 +75,10 @@ export const Success = ({ candidate }) => {
               <Card.Text>
                 {candidate.candidates[currentCandidate].vicinity}
               </Card.Text>
+              <a
+                className="stretched-link"
+                href={`https://www.google.com/maps/place/${address}`}
+              ></a>
             </Card.Body>
           </Card>
         </Col>

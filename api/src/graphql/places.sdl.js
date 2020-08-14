@@ -50,8 +50,8 @@ export const schema = gql`
   }
 
   type Location {
-    lat: Int
-    lng: Int
+    lat: Float
+    lng: Float
   }
 
   type Viewport {
