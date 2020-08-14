@@ -16,27 +16,56 @@ body {
 }
 
 h1, h5, p, .btn {
-  font-family: 'Open Sans' sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: rgba(0, 0, 0, 0.9);
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 64px;
+  font-weight: 800;
+  font-size: 4rem;
 }
 
 h5 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.card-subtitle {
+  color: rgba(0, 0, 0, 0.7);
   font-weight: 600;
-  font-size: 24px;
 }
 
 p {
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 1rem;
   line-height: 22px;
 }
 
+p.card-text {
+  color: rgba(0, 0, 0, 0.7);
+
+}
+
 button {
-  font-weight: bold;
-  font-size: 17px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.075em;
+  background-color: #FFCC00;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  }
+
+.card-img-top {
+  border-radius: 12px 12px 0px 0px;
+  border: none;
+}
+
+.card {
+  border: none;
+  border-radius: 12px 12px 12px 12px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+}
+.row {
+  padding-top: 20px;
 }

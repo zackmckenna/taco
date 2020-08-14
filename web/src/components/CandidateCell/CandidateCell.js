@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Button, Row, Col } from 'react-bootstrap'
+import { Card, Button, Row, Col, Spinner } from 'react-bootstrap'
 export const QUERY = gql`
   query($searchTerm: String!, $latitude: Float, $longitude: Float) {
     candidate: getPlaces(
@@ -32,7 +32,15 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => {
+  return (
+    <Row>
+      <Col className="mt-4 text-center">
+        <Spinner animation="border" size="lg" />
+      </Col>
+    </Row>
+  )
+}
 
 export const Empty = () => <div>Empty</div>
 
@@ -58,9 +66,6 @@ export const Success = ({ candidate }) => {
               <Card.Text>
                 {candidate.candidates[currentCandidate].vicinity}
               </Card.Text>
-              <Card.Subtitle>
-                {candidate.candidates[currentCandidate].rating}/5
-              </Card.Subtitle>
             </Card.Body>
           </Card>
         </Col>

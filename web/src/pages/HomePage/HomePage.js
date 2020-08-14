@@ -61,10 +61,6 @@ const HomePage = () => {
             <Row>
               <Col className="mt-4 text-center">
                 <h1>taco.io</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="text-center">
                 <p>quickly locate the nearest taco joint</p>
               </Col>
             </Row>
@@ -93,13 +89,7 @@ const HomePage = () => {
         {!searchTerm && latitude && longitude && (
           <Row>
             <Col className="text-center">
-              <Button
-                style={{ borderRadius: '50px' }}
-                className="btn-lg btn-warning"
-                onClick={() => handleTacoClick()}
-              >
-                Taco Me
-              </Button>
+              <button onClick={() => handleTacoClick()}>Taco Me</button>
             </Col>
           </Row>
         )}
